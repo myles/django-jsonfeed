@@ -1,3 +1,4 @@
+import datetime
 import unittest
 
 
@@ -17,7 +18,8 @@ class JSONFeedTest(unittest.TestCase):
             title='Hello',
             link='https://example.com/hello',
             external_url='https://mylesb.ca/',
-            description='Testing.'
+            description='Testing.',
+            pubdate=datetime.datetime(1986, 9, 19, 8, 45)
         )
 
     def test_add_root_elements(self):
