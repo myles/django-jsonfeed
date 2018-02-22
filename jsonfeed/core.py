@@ -1,3 +1,4 @@
+import datetime
 import json
 
 from django.utils.feedgenerator import SyndicationFeed
@@ -6,13 +7,23 @@ from django.utils.feedgenerator import SyndicationFeed
 class JSONFeed(SyndicationFeed):
     content_type = 'application/json; charset=utf-8'
 
+    def json_serial(self, obj):
+        """
+        Custom JSON serializer for objects not serializable by default.
+        """
+
+        if isinstance(obj, (datetime.datetime, datetime.date)):
+            return obj.isoformat()
+
+        raise TypeError('Type {} not serializable.'.format(type(obj)))
+
     def write(self, outfile, encoding):
         data = self.add_root_elements()
 
         for item in self.items:
             data['items'] += [self.add_item_elements(item), ]
 
-        outfile.write(json.dumps(data))
+        outfile.write(json.dumps(data, default=self.json_serial))
 
     def add_root_elements(self):  # noqa
         root_elements = {
