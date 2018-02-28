@@ -8,8 +8,8 @@ name = "pypi"
 [packages]
 
 
-
 [dev-packages]
 
+feedgenerator = "*"
 django = "*"
 twine = "*"

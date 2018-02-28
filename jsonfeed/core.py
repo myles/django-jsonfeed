@@ -1,7 +1,10 @@
 import datetime
 import json
 
-from django.utils.feedgenerator import SyndicationFeed
+try:
+    from feedgenerator import SyndicationFeed
+except ImportError:
+    from django.utils.feedgenerator import SyndicationFeed
 
 
 class JSONFeed(SyndicationFeed):
