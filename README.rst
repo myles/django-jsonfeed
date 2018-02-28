@@ -1,5 +1,9 @@
-Django JSONFeed
 ===============
+Django-JSONFeed
+===============
+
+.. image:: https://travis-ci.org/myles/django-jsonfeed.svg?branch=master
+    :target: https://travis-ci.org/myles/django-jsonfeed
 
 Adding a `JSON Feed`_ type to `Django Syndication Feed Framework`_ or any standard Python project.
 
