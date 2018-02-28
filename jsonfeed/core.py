@@ -69,10 +69,10 @@ class JSONFeed(SyndicationFeed):
             root_elements['_django'] = {}
 
         if self.feed.get('feed_copyright'):
-            root_elements['django']['copyright'] = self.feed['feed_copyright']
+            root_elements['_django']['copyright'] = self.feed['feed_copyright']
 
         if self.feed.get('ttl'):
-            root_elements['django']['ttl'] = self.feed['ttl']
+            root_elements['_django']['ttl'] = self.feed['ttl']
 
         root_elements['items'] = list()
 
@@ -112,7 +112,7 @@ class JSONFeed(SyndicationFeed):
         if item.get('enclosures'):
             item_element['attachments'] = []
 
-        for attachment in item.get('enclosures'):
+        for attachment in item.get('enclosures', []):
             item_element['attachments'] += [attachment.__dict__, ]
 
         enclosure = {}
@@ -126,8 +126,10 @@ class JSONFeed(SyndicationFeed):
         if item.get('enclosure_mime_type'):
             enclosure['mime_type'] = item.get('enclosure_mime_type')
 
-        if enclosure:
+        if enclosure and item_element.get('attachments'):
             item_element['attachments'] += [enclosure, ]
+        elif enclosure and not item_element.get('attachments'):
+            item_element['attachment'] = [enclosure, ]
 
         if item.get('pubdate'):
             item_element['date_published'] = item.get('pubdate')
