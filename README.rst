@@ -5,7 +5,7 @@ Django-JSONFeed
 .. image:: https://travis-ci.org/myles/django-jsonfeed.svg?branch=master
     :target: https://travis-ci.org/myles/django-jsonfeed
 
-Adding a `JSON Feed`_ type to `Django Syndication Feed Framework`_ or any standard Python project.
+This library intends to support `JSON Feed`_ in Django_ and feedgenerator_.
 
 Usage
 -----
@@ -36,13 +36,11 @@ If you are using this library without Django, you will first need to install the
 
     return feed.writeString()
 
-License
--------
+Installation
+------------
 
-This is free and unencumbered software released into the public domain.
-
-Anyone is free to copy, modify, publish, use, compile, sell, or distribute this software, either in source code form or as a compiled binary, for any purpose, commercial or non-commercial, and by any means.
+    $ pip install django-jsonfeed
 
 .. _JSON Feed: https://jsonfeed.org/
 .. _feedgenerator: https://pypi.python.org/pypi/feedgenerator
-.. _Django Syndication Feed Framework: https://docs.djangoproject.com/en/2.0/ref/contrib/syndication/
+.. _Django: https://djangoproject.com/
