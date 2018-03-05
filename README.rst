@@ -4,6 +4,10 @@ Django-JSONFeed
 
 .. image:: https://travis-ci.org/myles/django-jsonfeed.svg?branch=master
     :target: https://travis-ci.org/myles/django-jsonfeed
+    :alt: CI Status
+.. image:: https://readthedocs.org/projects/django-jsonfeed/badge/?version=latest
+    :target: http://django-jsonfeed.readthedocs.io/en/latest/?badge=latest
+    :alt: Documentation Status
 
 This library intends to support `JSON Feed`_ in Django_ and feedgenerator_.
 
