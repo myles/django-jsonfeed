@@ -7,11 +7,10 @@ name = "pypi"
 
 [packages]
 
-sphinx = "*"
-
 
 [dev-packages]
 
 feedgenerator = "*"
 django = "*"
 twine = "*"
+sphinx = "*"
