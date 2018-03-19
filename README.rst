@@ -1,3 +1,5 @@
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fmyles%2Fdjango-jsonfeed.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fmyles%2Fdjango-jsonfeed?ref=badge_shield)
+
 ===============
 Django-JSONFeed
 ===============
@@ -48,3 +50,7 @@ Installation
 .. _JSON Feed: https://jsonfeed.org/
 .. _feedgenerator: https://pypi.python.org/pypi/feedgenerator
 .. _Django: https://djangoproject.com/
+
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fmyles%2Fdjango-jsonfeed.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fmyles%2Fdjango-jsonfeed?ref=badge_large)
