@@ -24,6 +24,7 @@ class JSONFeedTest(unittest.TestCase):
         )
 
         self.feed.add_item(
+            guid='https://example.com/hello',
             title='Hello',
             link='https://example.com/hello',
             external_url='https://mylesb.ca/',
@@ -31,18 +32,42 @@ class JSONFeedTest(unittest.TestCase):
             pubdate=datetime.datetime(1986, 9, 19, 8, 45)
         )
 
+    def test_json_serial(self):
+        self.assertEqual(
+            self.feed.json_serial(datetime.date(2018, 4, 27)),
+            '2018-04-27'
+        )
+
+    def test_json_serial_exception(self):
+        with self.assertRaises(TypeError):
+            self.feed.json_serial(datetime)
+
     def test_add_root_elements(self):
         root_elements = self.feed.add_root_elements()
+
         self.assertEqual(root_elements['title'], 'Hello, World!')
-        self.assertEqual(root_elements['home_page_url'],
-                         'https://example.com/')
-        self.assertEqual(root_elements['author'],
-                         {'name': 'Myles Braithwaite',
-                          'email': 'myles@example.com',
-                          'url': 'https://example.com/'})
-        self.assertEqual(root_elements['_django'],
-                         {'copyright': 'Copyright 2018',
-                          'ttl': '5000'})
+
+        self.assertEqual(
+            root_elements['home_page_url'],
+            'https://example.com/'
+        )
+
+        self.assertEqual(
+            root_elements['author'],
+            {
+                'name': 'Myles Braithwaite',
+                'email': 'myles@example.com',
+                'url': 'https://example.com/'
+            }
+        )
+
+        self.assertEqual(
+            root_elements['_django'],
+            {
+                'copyright': 'Copyright 2018',
+                'ttl': '5000'
+            }
+        )
 
     def test_add_item(self):
         item = self.feed.add_item_elements(dict(
@@ -58,12 +83,34 @@ class JSONFeedTest(unittest.TestCase):
             pubdate=datetime.datetime.now(),
             updateddate=datetime.datetime.now(),
             categories=['test'],
-            copyright='Copyright 2018'
+            copyright='Copyright 2018',
+            enclosure_url='https://example.com/hello/image.png',
+            enclosure_length=20,
+            enclosure_mime_type='image/png',
+            enclosures=[
+                dict(
+                    enclosure_url='https://example.com/hello/audio.mp3',
+                    enclosure_length=20,
+                    enclosure_mime_type='audio/mpeg',
+                ),
+            ]
         ))
 
         self.assertEqual(item['title'], 'Hello, World!')
+
         self.assertEqual(item['content_html'], '<p>Hello, World!</p>')
+
         self.assertEqual(item['content_text'], 'Hello, World!')
+
+        self.assertEqual(
+            item['attachments'][1]['url'],
+            'https://example.com/hello/image.png'
+        )
+
+        self.assertEqual(
+            item['attachments'][0]['url'],
+            'https://example.com/hello/audio.mp3'
+        )
 
     def test_writeString(self):
         feed = self.feed.writeString('utf-8')

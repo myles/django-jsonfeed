@@ -10,7 +10,8 @@ except ImportError:
 class JSONFeed(SyndicationFeed):
     content_type = 'application/json; charset=utf-8'
 
-    def json_serial(self, obj):
+    @staticmethod
+    def json_serial(obj):
         """
         Custom JSON serializer for objects not serializable by default.
         """
@@ -28,7 +29,7 @@ class JSONFeed(SyndicationFeed):
 
         outfile.write(json.dumps(data, default=self.json_serial))
 
-    def add_root_elements(self):  # noqa
+    def add_root_elements(self, handler=None):  # noqa
         root_elements = {
             'version': 'https://jsonfeed.org/version/1'
         }
@@ -37,8 +38,8 @@ class JSONFeed(SyndicationFeed):
         root_elements['home_page_url'] = self.feed.get('link')
         root_elements['description'] = self.feed.get('description')
 
-        if self.feed.get('author_link') or self.feed.get('author_name') or \
-           self.feed.get('author_email'):
+        if (self.feed.get('author_link') or self.feed.get('author_name')
+                or self.feed.get('author_email')):
             root_elements['author'] = {}
 
         if self.feed.get('author_name'):
@@ -81,7 +82,7 @@ class JSONFeed(SyndicationFeed):
 
         return root_elements
 
-    def add_item_elements(self, item):  # noqa
+    def add_item_elements(self, item, handler=None):  # noqa
         item_element = {}
 
         if item.get('title'):
@@ -116,23 +117,21 @@ class JSONFeed(SyndicationFeed):
             item_element['attachments'] = []
 
         for attachment in item.get('enclosures', []):
-            item_element['attachments'] += [attachment.__dict__, ]
+            item_element['attachments'] += [{
+                'url': attachment.get('enclosure_url'),
+                'size_in_bytes': attachment.get('enclosure_length'),
+                'mime_type': attachment.get('enclosure_mime_type'),
+                'duration_in_seconds': attachment.get('duration_in_seconds')
+            }]
 
-        enclosure = {}
-
-        if item.get('enclosure_url'):
-            enclosure['url'] = item.get('enclosure_url')
-
-        if item.get('enclosure_length'):
-            enclosure['length'] = item.get('enclosure_length')
-
-        if item.get('enclosure_mime_type'):
-            enclosure['mime_type'] = item.get('enclosure_mime_type')
-
-        if enclosure and item_element.get('attachments'):
-            item_element['attachments'] += [enclosure, ]
-        elif enclosure and not item_element.get('attachments'):
-            item_element['attachment'] = [enclosure, ]
+        if (item.get('enclosure_url') or item.get('enclosure_length')
+                or item.get('enclosure_mime_type')):
+            item_element['attachments'] += [{
+                'url': item.get('enclosure_url'),
+                'size_in_bytes': item.get('enclosure_length'),
+                'mime_type': item.get('enclosure_mime_type'),
+                'duration_in_seconds': attachment.get('enclosure_in_seconds')
+            }]
 
         if item.get('pubdate'):
             item_element['date_published'] = item.get('pubdate')

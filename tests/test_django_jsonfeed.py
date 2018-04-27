@@ -1,4 +1,6 @@
 import datetime
+import sys
+import mock
 import unittest
 
 
@@ -6,7 +8,9 @@ class DjangoJSONFeedTest(unittest.TestCase):
 
     def setUp(self):
         from django.contrib.syndication.views import Feed
-        from jsonfeed import JSONFeed
+
+        with mock.patch.dict(sys.modules, {'feedgenerator': None}):
+            from jsonfeed import JSONFeed
 
         class TestFeed(Feed):
             type = JSONFeed
