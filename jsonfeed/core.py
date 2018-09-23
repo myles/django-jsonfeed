@@ -100,8 +100,11 @@ class JSONFeed(SyndicationFeed):
         if item.get('unique_id'):
             item_element['id'] = item.get('unique_id')
 
-        if item.get('author_name') or item.get('author_email') or \
-           item.get('author_link'):
+        if (
+                item.get('author_name') or
+                item.get('author_email') or
+                item.get('author_link')
+        ):
             item_element['author'] = {}
 
         if item.get('author_name'):
