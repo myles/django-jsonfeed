@@ -2,9 +2,9 @@ import datetime
 import json
 
 try:
-    from feedgenerator import SyndicationFeed
+    from feedgenerator import SyndicationFeed, rfc3339_date
 except ImportError:
-    from django.utils.feedgenerator import SyndicationFeed
+    from django.utils.feedgenerator import SyndicationFeed, rfc3339_date
 
 
 class JSONFeed(SyndicationFeed):
@@ -134,10 +134,12 @@ class JSONFeed(SyndicationFeed):
             }]
 
         if item.get('pubdate'):
-            item_element['date_published'] = item.get('pubdate')
+            item_element['date_published'] = rfc3339_date(item.get('pubdate'))
 
         if item.get('updateddate'):
-            item_element['date_modified'] = item.get('updateddate')
+            item_element['date_modified'] = rfc3339_date(
+                item.get('updateddate')
+            )
 
         if item.get('categories'):
             item_element['tags'] = item.get('categories')
