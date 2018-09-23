@@ -24,7 +24,7 @@ class JSONFeedTest(unittest.TestCase):
         )
 
         self.feed.add_item(
-            guid='https://example.com/hello',
+            unique_id='https://example.com/hello',
             title='Hello',
             link='https://example.com/hello',
             external_url='https://mylesb.ca/',
@@ -76,7 +76,7 @@ class JSONFeedTest(unittest.TestCase):
             content_text='Hello, World!',
             link='https://example.com/hello',
             external_url='https://mylesb.ca/',
-            guid='https://example.com/hello',
+            unique_id='https://example.com/hello',
             author_name='Myles Braithwaite',
             author_email='myles@example.com',
             author_link='https://example.com/',
@@ -97,6 +97,8 @@ class JSONFeedTest(unittest.TestCase):
         ))
 
         self.assertEqual(item['title'], 'Hello, World!')
+
+        self.assertEqual(item['id'], 'https://example.com/hello')
 
         self.assertEqual(item['content_html'], '<p>Hello, World!</p>')
 
