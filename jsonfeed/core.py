@@ -130,7 +130,7 @@ class JSONFeed(SyndicationFeed):
                 'url': item.get('enclosure_url'),
                 'size_in_bytes': item.get('enclosure_length'),
                 'mime_type': item.get('enclosure_mime_type'),
-                'duration_in_seconds': attachment.get('enclosure_in_seconds')
+                'duration_in_seconds': item.get('enclosure_in_seconds')
             }]
 
         if item.get('pubdate'):
