@@ -97,8 +97,8 @@ class JSONFeed(SyndicationFeed):
         if item.get('link'):
             item_element['url'] = item.get('link')
 
-        if item.get('guid'):
-            item_element['id'] = item.get('guid')
+        if item.get('unique_id'):
+            item_element['id'] = item.get('unique_id')
 
         if item.get('author_name') or item.get('author_email') or \
            item.get('author_link'):
