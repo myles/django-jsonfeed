@@ -121,10 +121,9 @@ class JSONFeed(SyndicationFeed):
 
         for attachment in item.get('enclosures', []):
             item_element['attachments'] += [{
-                'url': attachment.get('enclosure_url'),
-                'size_in_bytes': attachment.get('enclosure_length'),
-                'mime_type': attachment.get('enclosure_mime_type'),
-                'duration_in_seconds': attachment.get('duration_in_seconds')
+                'url': attachment.url,
+                'size_in_bytes': attachment.length,
+                'mime_type': attachment.mime_type,
             }]
 
         if (item.get('enclosure_url') or item.get('enclosure_length')
