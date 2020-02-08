@@ -1,5 +1,6 @@
 import datetime
 import unittest
+from feedgenerator import Enclosure
 
 
 class JSONFeedTest(unittest.TestCase):
@@ -88,11 +89,8 @@ class JSONFeedTest(unittest.TestCase):
             enclosure_length=20,
             enclosure_mime_type='image/png',
             enclosures=[
-                dict(
-                    enclosure_url='https://example.com/hello/audio.mp3',
-                    enclosure_length=20,
-                    enclosure_mime_type='audio/mpeg',
-                ),
+                Enclosure(url='https://example.com/hello/audio.mp3', length=20,
+                    mime_type='audio/mpeg')
             ]
         ))
 
