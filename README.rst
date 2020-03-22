@@ -11,6 +11,10 @@ Django-JSONFeed
 
 This library intends to support `JSON Feed`_ in Django_ and feedgenerator_.
 
+.. image:: design/repository-open-graph-template.png
+    :target: https://django-jsonfeed.mylesbraithwaite.org/
+    :alt: Django JSONFeed
+
 Usage
 -----
 
