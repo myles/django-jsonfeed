@@ -2,13 +2,6 @@
 Django-JSONFeed
 ===============
 
-.. image:: https://travis-ci.org/myles/django-jsonfeed.svg?branch=master
-    :target: https://travis-ci.org/myles/django-jsonfeed
-    :alt: CI Status
-.. image:: https://readthedocs.org/projects/django-jsonfeed/badge/?version=latest
-    :target: http://django-jsonfeed.readthedocs.io/en/latest/?badge=latest
-    :alt: Documentation Status
-
 This library intends to support `JSON Feed`_ in Django_ and feedgenerator_.
 
 .. image:: design/repository-open-graph-template.png
@@ -18,7 +11,9 @@ This library intends to support `JSON Feed`_ in Django_ and feedgenerator_.
 Usage
 -----
 
-If you are using Django::
+If you are using Django:
+
+.. code-block:: python
 
     from django.contrib.syndication.views import Feed
     from jsonfeed import JSONFeed
@@ -26,7 +21,9 @@ If you are using Django::
     class ExampleFeed(Feed):
         type = JSONFeed
 
-If you are using this library without Django, you will first need to install the feedgenerator_ Python package::
+If you are using this library without Django, you will first need to install the feedgenerator_ Python package:
+
+.. code-block:: python
 
     from jsonfeed import JSONFeed
 
@@ -46,6 +43,8 @@ If you are using this library without Django, you will first need to install the
 
 Installation
 ------------
+
+::
 
     $ pip install django-jsonfeed
 
