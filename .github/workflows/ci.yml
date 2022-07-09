@@ -10,7 +10,6 @@ jobs:
       max-parallel: 4
       matrix:
         python-version: [3.8, 3.9]
-        django-version: ["3.2.14", "4.0.7"]
 
     steps:
     - name: Checkout
@@ -25,9 +24,6 @@ jobs:
       run: |
         pipx install poetry
         poetry install
-
-    - name: Install Django ${{ matrix.django-version }}
-      run: poetry add Django@${{ matrix.django-version }}
 
     - name: Test with pytest
       run: poetry run pytest
