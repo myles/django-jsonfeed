@@ -3,7 +3,18 @@ name = "django-jsonfeed"
 version = "0.3.1"
 description = "JSONFeed syndication in Django."
 authors = ["Myles Braithwaite <me@mylesbraithwaite.org>"]
-license = "MIT License"
+license = "MIT"
+readme = "README.rst"
+repository = "https://github.com/myles/django-jsonfeed"
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+    "Framework :: Django",
+    "Framework :: Flask",
+    "Framework :: Pelican",
+    "Programming Language :: Python",
+]
+packages = [{ include = "jsonfeed" }]
+include = ["README.rst", "LICENSE"]
 
 [tool.poetry.dependencies]
 python = "^3.9"
