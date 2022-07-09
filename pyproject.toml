@@ -17,7 +17,7 @@ packages = [{ include = "jsonfeed" }]
 include = ["README.rst", "LICENSE"]
 
 [tool.poetry.dependencies]
-python = "^3.6"
+python = "^3.8"
 
 [tool.poetry.dev-dependencies]
 feedgenerator = "^2.0.0"
