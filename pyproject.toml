@@ -2,16 +2,14 @@
 name = "django-jsonfeed"
 version = "0.3.1"
 description = "JSONFeed syndication in Django."
-authors = ["Myles Braithwaite <me@mylesbraithwaite.com>"]
+authors = ["Myles Braithwaite <me@mylesbraithwaite.org>"]
 license = "MIT License"
 
 [tool.poetry.dependencies]
 python = "^3.9"
-django-jsonfeed = {path = "."}
 
 [tool.poetry.dev-dependencies]
 feedgenerator = "^2.0.0"
-django-503 = "^0.1"
 Django = "^4.0.6"
 twine = "^4.0.1"
 Sphinx = "^5.0.2"
