@@ -21,7 +21,7 @@ python = "^3.8"
 
 [tool.poetry.dev-dependencies]
 feedgenerator = "^2.0.0"
-Django = "^4.0.9"
+Django = "^4.1.7"
 twine = "^4.0.1"
 Sphinx = "^5.0.2"
 pytest = "^7.1.2"
