@@ -166,7 +166,9 @@ class JSONFeed(SyndicationFeed):
             item_element["date_published"] = rfc3339_date(item.get("pubdate"))
 
         if item.get("updateddate"):
-            item_element["date_modified"] = rfc3339_date(item.get("updateddate"))
+            item_element["date_modified"] = rfc3339_date(
+                item.get("updateddate")
+            )
 
         if item.get("categories"):
             item_element["tags"] = item.get("categories")
