@@ -62,7 +62,8 @@ class JSONFeedTest(unittest.TestCase):
         )
 
         self.assertEqual(
-            root_elements["_django"], {"copyright": "Copyright 2018", "ttl": "5000"}
+            root_elements["_django"],
+            {"copyright": "Copyright 2018", "ttl": "5000"},
         )
 
     def test_add_item(self):
