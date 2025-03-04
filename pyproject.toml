@@ -17,11 +17,11 @@ packages = [{ include = "jsonfeed" }]
 include = ["README.rst", "LICENSE"]
 
 [tool.poetry.dependencies]
-python = "^3.8"
+python = "^3.12"
 
 [tool.poetry.dev-dependencies]
-feedgenerator = "^2.0.0"
-Django = "^4.1.9"
+feedgenerator = ">=2,<3"
+Django = ">=5,<6"
 twine = "^4.0.1"
 Sphinx = "^5.0.2"
 pytest = "^7.1.2"
